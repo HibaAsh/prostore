@@ -16,3 +16,32 @@ export function formatNumberWithDecimal(num: number): string {
 
   return decimal ? `${int}.${decimal.padEnd(2, "0")}` : `${int}.00`;
 }
+
+// Format errors
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function formatErrors(error: any) {
+  if (error.name === "ZodError") {
+    // handle zod error
+    const fieldErrors = Object.keys(error.issues).map(
+      (field) => error.issues[field].message,
+    );
+
+    return fieldErrors.join(". ");
+  } else if (
+    error.name === "PrismaClientKnownRequestError" &&
+    error.code === "P2002"
+  ) {
+    const message = error.meta?.driverAdapterError?.cause?.originalMessage;
+
+    if (message?.includes("user_email_idx")) {
+      return "Email already exists";
+    }
+
+    return "A field with this value already exists";
+  } else {
+    // handle other errors
+    return typeof (error.message === "string")
+      ? error.message
+      : JSON.stringify(error.message);
+  }
+}
