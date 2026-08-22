@@ -2,13 +2,13 @@ import Header from "@/components/shared/header";
 import Footer from "@/components/footer";
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-    return (
-        <div className="flex flex-col h-screen">
-            <Header />
+  return (
+    <div className="flex flex-col h-screen">
+      <Header />
 
-            <main className="flex-1 wrapper">{children}</main>
+      <main className="flex-1 wrapper">{children}</main>
 
-            <Footer />
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 }

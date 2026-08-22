@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/lib/prisma"
+import { prisma } from "@/lib/prisma";
 
 import { convertToPlainObject } from "../utils";
 
@@ -18,5 +18,5 @@ export async function getLatestProducts() {
 
 // Get single product by its slug
 export async function getProductBySlug(slug: string) {
-  return await prisma.product.findFirst({ where: { slug } })
+  return await prisma.product.findFirst({ where: { slug } });
 }

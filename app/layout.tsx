@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
+
 import "@/assets/styles/globals.css";
+
 import { cn } from "@/lib/utils";
 
 import { APP_NAME, APP_DESCRIPTION, SERVER_URL } from "@/lib/constants";
@@ -36,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
