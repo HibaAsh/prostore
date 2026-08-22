@@ -87,9 +87,7 @@ const SignUpForm = () => {
         </div>
 
         {data && !data.success && (
-          data.message?.split(".").map((err) => (
-            <div key={err} className="text-center text-destructive">{err}</div>
-          ))
+          <div className="text-center text-destructive">{data.message?.split(".")}</div>
         )}
 
         <div className="text-center text-muted-forground">
